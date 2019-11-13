@@ -1,14 +1,4 @@
-﻿/*
-
-ThoughtWorks - Coding Assignment
-Problem Three: Merchant's Guide to the Galaxy
-
-10/03/2014
-Justin Ware
-wareisjustin@gmail.com
-
-*/
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using JustinWare.MerchantsGuide.Core.Contracts;

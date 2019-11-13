@@ -1,14 +1,4 @@
-﻿/*
-
-ThoughtWorks - Coding Assignment
-Problem Three: Merchant's Guide to the Galaxy
-
-10/03/2014
-Justin Ware
-wareisjustin@gmail.com
-
-*/
-using JustinWare.MerchantsGuide.Core.Contracts;
+﻿using JustinWare.MerchantsGuide.Core.Contracts;
 
 namespace JustinWare.MerchantsGuide.Core.Models
 {
