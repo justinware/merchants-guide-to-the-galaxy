@@ -8,7 +8,7 @@ namespace JustinWare.MerchantsGuide.Core.Models
     {
       OriginalText = originalText;
     }
-    
+
     public string OriginalText { get; private set; }
     public bool IsValid { get; set; }
   }

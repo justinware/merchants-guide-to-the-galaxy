@@ -12,12 +12,12 @@ namespace JustinWare.MerchantsGuide.Core.Presenters
     private readonly IParserService _parserService;
     private readonly IFactRepository _factRepository;
     private readonly IQueryService _queryService;
-    
+
     public MainPresenter(IView view,
-                  IFileService fileService,
-                  IParserService parserService,
-                  IFactRepository factRepository,
-                  IQueryService queryService)
+             IFileService fileService,
+             IParserService parserService,
+             IFactRepository factRepository,
+             IQueryService queryService)
     {
       _view = view;
       _fileService = fileService;
@@ -25,7 +25,7 @@ namespace JustinWare.MerchantsGuide.Core.Presenters
       _factRepository = factRepository;
       _queryService = queryService;
     }
-    
+
     public void Initialise()
     {
       // Ensure input file is present and wait for user ready
@@ -48,7 +48,7 @@ namespace JustinWare.MerchantsGuide.Core.Presenters
       // Output error for invalid facts
       _view.WriteLineToOutput(string.Empty);
       _view.WriteLinesToOutput(inputSet.Facts.Where(f => !f.IsValid)
-                                .Select(f => string.Format(Constants.Output.InvalidFactText, f.OriginalText)));
+                        .Select(f => string.Format(Constants.Output.InvalidFactText, f.OriginalText)));
 
       // Process each query and output result
       _view.WriteLinesToOutput(inputSet.Queries.Select(q => _queryService.ProcessQuery(q)));

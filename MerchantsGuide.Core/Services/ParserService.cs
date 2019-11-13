@@ -10,10 +10,10 @@ namespace JustinWare.MerchantsGuide.Core.Services
     private readonly IInputLineFactory _inputLineFactory;
 
     private readonly string[] _inputSeparators = new[]
-                                  {
-                                    Constants.Input.EquationSeparator,
-                                    Constants.Input.EquationSeparator.ToUpper()
-                                  };
+                        {
+                        Constants.Input.EquationSeparator,
+                        Constants.Input.EquationSeparator.ToUpper()
+                       };
 
     public ParserService(IInputLineFactory inputLineFactory)
     {
@@ -23,15 +23,15 @@ namespace JustinWare.MerchantsGuide.Core.Services
     public IInputSet ParseInputText(string input)
     {
       var result = new InputSet();
-      
+
       var lines = input.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
       result.Facts = lines.Where(l => !l.EndsWith(Constants.Input.QuerySuffix))
-                    .Select(CreateFact);
+                .Select(CreateFact);
 
       result.Queries = lines.Where(l => l.EndsWith(Constants.Input.QuerySuffix))
-                     .Select(CreateQuery);
-      
+                .Select(CreateQuery);
+
       return result;
     }
 
@@ -40,7 +40,7 @@ namespace JustinWare.MerchantsGuide.Core.Services
       var fact = _inputLineFactory.CreateFact(factText);
 
       // TODO: Should the parsing and interpreting of fact text be a responsibility of this class or the factory 
-      //     or fact class itself ?? Not sure, revise this later !!
+      //    or fact class itself ?? Not sure, revise this later !!
 
       if (string.IsNullOrEmpty(fact.OriginalText))
       {
@@ -73,7 +73,7 @@ namespace JustinWare.MerchantsGuide.Core.Services
       }
 
       // TODO: Perform final validation here checking that Roman Numerals, Commodities & Currencies are valid as per known data.
-      //     Possibly using IDataValidationService or similar
+      //    Possibly using IDataValidationService or similar
 
       return fact;
     }
@@ -83,7 +83,7 @@ namespace JustinWare.MerchantsGuide.Core.Services
       var query = _inputLineFactory.CreateQuery(queryText);
 
       // TODO: Should the parsing and interpreting of query text be a responsibility of this class or the factory 
-      //     or Query class itself ?? Not sure, revise this later !!
+      //    or Query class itself ?? Not sure, revise this later !!
 
       if (string.IsNullOrEmpty(query.OriginalText))
       {
@@ -93,7 +93,7 @@ namespace JustinWare.MerchantsGuide.Core.Services
 
       var parts = query.OriginalText.Split(_inputSeparators, StringSplitOptions.RemoveEmptyEntries);
       query.IsValid = (parts.Length == 2 && (query.OriginalText.ToLowerInvariant().StartsWith(Constants.Input.QueryPrefix1)
-                              || query.OriginalText.ToLowerInvariant().StartsWith(Constants.Input.QueryPrefix2)));
+                      || query.OriginalText.ToLowerInvariant().StartsWith(Constants.Input.QueryPrefix2)));
 
       if (query.IsValid)
       {
@@ -117,7 +117,7 @@ namespace JustinWare.MerchantsGuide.Core.Services
       }
 
       // TODO: Perform final validation here checking that Commodities & Currencies are valid as per known data.
-      //     Possibly using IDataValidationService or similar
+      //    Possibly using IDataValidationService or similar
 
       return query;
     }

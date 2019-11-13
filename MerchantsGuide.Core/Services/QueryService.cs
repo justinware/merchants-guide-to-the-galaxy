@@ -36,10 +36,10 @@ namespace JustinWare.MerchantsGuide.Core.Services
       var queryAmount = GetIntegerValueFromAmount(query.Amount);
 
       var matchingFact =
-        _factRepository.Facts.SingleOrDefault(f => f.IsValid 
-                                     && !f.IsRomanNumeralEquality 
-                                     && (f.Unit.ToLowerInvariant() == query.Unit.ToLowerInvariant())
-                                     && (f.Item.ToLowerInvariant() == query.Item.ToLowerInvariant()));
+        _factRepository.Facts.SingleOrDefault(f => f.IsValid
+                           && !f.IsRomanNumeralEquality
+                           && (f.Unit.ToLowerInvariant() == query.Unit.ToLowerInvariant())
+                           && (f.Item.ToLowerInvariant() == query.Item.ToLowerInvariant()));
 
       if (matchingFact == null)
       {
@@ -60,12 +60,12 @@ namespace JustinWare.MerchantsGuide.Core.Services
 
       // TODO: Can this be done more elegantly with LINQ (i.e. no foreach) ?? Revise later !!
       _factRepository.Facts.Where(f => f.IsValid && f.IsRomanNumeralEquality)
-                    .ForEach(f => { amount = amount.Replace(f.X.ToLowerInvariant(), f.Y); });
+                .ForEach(f => { amount = amount.Replace(f.X.ToLowerInvariant(), f.Y); });
 
       // TODO: This is not ideal (actually creating an instance like this using a static method). Look to probably do this
-      //     with IRomanNumeralFactory or something so is more testable. I mean it is being tested, but just double
-      //     tested...as we have already tested the RomanNumeral class individually. But in the interest of time and simplicity,
-      //     will leave like this for now. Revise later !!!
+      //    with IRomanNumeralFactory or something so is more testable. I mean it is being tested, but just double
+      //    tested...as we have already tested the RomanNumeral class individually. But in the interest of time and simplicity,
+      //    will leave like this for now. Revise later !!!
       var romanNumeral = RomanNumeral.CreateFromString(amount.Replace(Constants.Input.WordSeparator, string.Empty));
 
       return romanNumeral.GetIntegerValue();

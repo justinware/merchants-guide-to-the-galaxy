@@ -50,7 +50,7 @@ namespace JustinWare.MerchantsGuide.Core.Models
       // In the interest of time, this method has not been fully implemented. It is assumed that for the sake of the
       // exercise, that the test data will be a valid Roman Numeral combination.
       // TODO: Implement valid roman numeral checking here !!!
-      
+
       return !string.IsNullOrEmpty(value);
     }
 
