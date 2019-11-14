@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using JustinWare.MerchantsGuide.Core.Contracts;
 using JustinWare.MerchantsGuide.Core.Models;
 
@@ -13,7 +14,8 @@ namespace JustinWare.MerchantsGuide.Core.Services
       // TODO: For simplicity, just get the input file from the (current) runtime directorty. Ideally would have the
       //    user input / choose themselves or provide as an argument to the app. But in the interest of time,
       //    this solution is deemed sufficent. Revise and evolve this later !!!
-      _inputFilePath = string.Concat(Directory.GetCurrentDirectory(), "\\", Constants.Input.InputFileName);
+      
+      _inputFilePath = string.Concat(Directory.GetCurrentDirectory(), "/", Constants.Input.InputFileName);
 
       return File.Exists(_inputFilePath);
     }
