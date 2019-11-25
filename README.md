@@ -1,2 +1,2 @@
-# merchants-guide-to-the-galaxy
-A C# / .NET core solution to the 'Merchant's Guide to the Galaxy' coding Kata
+# Merchants Guide To The Galaxy
+A C# / .NET core v3 solution to the 'Merchant's Guide to the Galaxy' coding Kata
